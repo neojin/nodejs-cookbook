@@ -33,6 +33,6 @@ bash "install npm - package manager for node" do
     curl -L #{npm_src_url} | tar xzf - --strip-components=1 && \
     make uninstall dev
   EOH
-  not_if "#{node['nodejs']['dir']}/bin/npm -v 2>&1 | grep '#{node['nodejs']['npm']}'"
+  not_if "$(which npm) -v 2>&1 | grep '#{node['nodejs']['npm']}'"
 end
 
